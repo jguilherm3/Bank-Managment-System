@@ -2,9 +2,13 @@ package bank.managment.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Login extends JFrame {
-
+public class Login extends JFrame implements ActionListener {
+    JButton singIn, clear, singUp;
+    JTextField cardTextField;
+    JPasswordField pinTextField;
+    //construtor
     Login(){
         setTitle("AUTOMATED TELLER MACHINE");
         setLayout(null);
@@ -30,8 +34,9 @@ public class Login extends JFrame {
         cardNumber.setBounds(120,150,150,40);
         add(cardNumber);
 
-        JTextField cardTextField = new JTextField();
+        cardTextField = new JTextField();
         cardTextField.setBounds(300,160,230,30);
+        cardTextField.setFont(new Font("Aerial", Font.BOLD, 14));
         add(cardTextField);
 
         // configurando o campo da senha
@@ -40,29 +45,33 @@ public class Login extends JFrame {
         pin.setBounds(120,220,250,30);
         add(pin);
 
-        JTextField pinTextField = new JTextField();
+        pinTextField = new JPasswordField();
         pinTextField.setBounds(300,220,230,30);
+        pinTextField.setFont(new Font("Aerial", Font.BOLD, 14));
         add(pinTextField);
 
         // configurando o botão de login
-        JButton login = new JButton("SIGN IN");
-        login.setBounds(300,300,100,30);
-        login.setBackground(Color.BLACK);
-        login.setForeground(Color.WHITE);
-        add(login);
+        singIn = new JButton("SIGN IN");
+        singIn.setBounds(300,300,100,30);
+        singIn.setBackground(Color.BLACK);
+        singIn.setForeground(Color.WHITE);
+        singIn.addActionListener(this);
+        add(singIn);
 
         // configurando o botão de 'clear'
-        JButton clear = new JButton("CLEAR");
+        clear = new JButton("CLEAR");
         clear.setBounds(430,300,100,30);
         clear.setBackground(Color.BLACK);
         clear.setForeground(Color.WHITE);
+        clear.addActionListener(this);
         add(clear);
 
          // botão de SIGN UP
-        JButton singUp = new JButton("SIGN UP");
-        singUp.setBounds(360,350,100,30);
+        singUp = new JButton("SIGN UP");
+        singUp.setBounds(300,350,230,30);
         singUp.setBackground(Color.BLACK);
         singUp.setForeground(Color.WHITE);
+        singUp.addActionListener(this);
         add(singUp);
 
 
@@ -76,6 +85,20 @@ public class Login extends JFrame {
         //Fechar a aba no X
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // setando uma string vazia ao clicar no botao de clear
+        if(e.getSource() == clear){
+            cardTextField.setText("");
+            pinTextField.setText("");
+        } else if (e.getSource() == singIn){
+
+        } else if (e.getSource() == singUp){
+
+        }
+    }
+
     public static void main(String[] args) {
         new Login();
     }
