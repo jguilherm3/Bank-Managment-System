@@ -31,7 +31,7 @@ public class Login extends JFrame {
         add(cardNumber);
 
         JTextField cardTextField = new JTextField();
-        cardTextField.setBounds(300,150,230,30);
+        cardTextField.setBounds(300,160,230,30);
         add(cardTextField);
 
         // configurando o campo da senha
@@ -60,7 +60,7 @@ public class Login extends JFrame {
 
          // botão de SIGN UP
         JButton singUp = new JButton("SIGN UP");
-        singUp.setBounds(300,300,100,30);
+        singUp.setBounds(360,350,100,30);
         singUp.setBackground(Color.BLACK);
         singUp.setForeground(Color.WHITE);
         add(singUp);
