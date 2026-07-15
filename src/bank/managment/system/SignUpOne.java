@@ -11,7 +11,6 @@ public class SignUpOne extends JFrame {
 
         setLayout(null);
 
-
         Random ran = new Random();
         // número longo, mas deixando apenas com 4 casas
         long randomNumber = Math.abs((ran.nextLong() % 9000L)+ 1000L);
