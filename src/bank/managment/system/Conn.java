@@ -5,12 +5,12 @@ import java.sql.*;
 public class Conn {
 
     Connection c;
-    Statement s;
+    public Statement s;
 
     public Conn(){
 
         try {
-            //1. Register the Driver
+            //1. Register the Driver (Carregando o driver do banco de dados)
             //Class.forName("com.mysql.cj.jdbc.Driver");
 
             //Create Connection
