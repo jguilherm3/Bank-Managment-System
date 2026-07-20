@@ -1,22 +1,20 @@
-import bank.managment.system.Conn;
-import com.toedter.calendar.JDateChooser;
+package bank.managment.system;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
+import java.util.Random;
 
 public class SignUpTwo extends JFrame implements ActionListener{
 
-    long randomNumber;
     JTextField panTextField,aadharTextField;
     JComboBox religionField,categoryField,incomeValues,qualiValues,OccupValues;
     JButton next;
     JRadioButton citizertrue, citizerfalse, accounttrue, accountfalse;
+    String formno;
 
-    SignUpTwo() {
-
+    SignUpTwo(String formno) {
+        this.formno = formno;
         setLayout(null);
 
         setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 2");
@@ -187,13 +185,6 @@ public class SignUpTwo extends JFrame implements ActionListener{
         String aadhar = aadharTextField.getText();
 
 
-        String existingAccount = null;
-        if (accounttrue.isSelected()) {
-            existingAccount = "Yes";
-        } else if (accountfalse.isSelected()) {
-            existingAccount = "No";
-        }
-
         String citizer = null;
         if (citizertrue.isSelected()) {
             citizer = "Yes";
@@ -202,22 +193,34 @@ public class SignUpTwo extends JFrame implements ActionListener{
         }
 
 
-        /*try {
+        String existingAccount = null;
+        if (accounttrue.isSelected()) {
+            existingAccount = "Yes";
+        } else if (accountfalse.isSelected()) {
+            existingAccount = "No";
+        }
+
+
+        try {
             if (panNumber.isEmpty()) {
                 //valindado campos vazios
                 JOptionPane.showMessageDialog(null, "PAN NUMBER IS REQUIRED");
             } else {
                 //fazendo a conexão com banco de dados e realizando um QUERY(DML)
                 Conn c = new Conn();
-                String query = "insert into signup values ('" + religion + "', '" + category + "', '" + income + "', '" + quali + "', '" + occup + "', '" + panNumber + "', '" + aadhar + "', '" + citizer + "', '" + existingAccount + "');";
+                String query = "insert into signupTwo values ('"+formno+"', '" + religion + "', '" + category + "', '" + income + "', '" + quali + "', '" + occup + "', '" + panNumber + "', '" + aadhar + "', '" + citizer + "', '" + existingAccount + "');";
                 c.s.executeUpdate(query);
+
+                //Signup3 object
+                setVisible(false);
+                new SignUpThree(formno).setVisible(true);
             }
         } catch (Exception ae) {
             System.out.println(ae);
-        }*/
+        }
     }
 
     public static void main(String[] args) {
-        new SignUpTwo();
+        new SignUpTwo("").setVisible(true);
     }
 }
