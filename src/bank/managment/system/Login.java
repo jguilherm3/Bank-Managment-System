@@ -3,6 +3,7 @@ package bank.managment.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
 
 public class Login extends JFrame implements ActionListener {
     JButton singIn, clear, singUp;
@@ -87,14 +88,32 @@ public class Login extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent ae) {
         // setando uma string vazia ao clicar no botao de clear
-        if(e.getSource() == clear){
+        if(ae.getSource() == clear){
             cardTextField.setText("");
             pinTextField.setText("");
-        } else if (e.getSource() == singIn){
 
-        } else if (e.getSource() == singUp){
+        } else if (ae.getSource() == singIn){
+
+            Conn conn = new Conn();
+            String cardNumber = cardTextField.getText();
+            String pinNumber = pinTextField.getText();
+            String query = "select * from login where cardnumber = '"+cardNumber+"' and pinnumber = '"+pinNumber+"';";
+
+            try{
+                ResultSet rs = conn.s.executeQuery(query);
+                if(rs.next()){
+                    setVisible(false);
+                    new Transactions(pinNumber).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null,"Incorret Card Number or Pin");
+                }
+            } catch (Exception e){
+                System.out.println(e);
+            }
+
+        } else if (ae.getSource() == singUp){
             setVisible(false);
             new SignUpOne().setVisible(true);
 

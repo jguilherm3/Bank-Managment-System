@@ -208,7 +208,6 @@ public class SignUpThree extends JFrame implements ActionListener {
             } catch(Exception e){
                 System.out.println(e);
             }
-
         } else if (ae.getSource() == cancel){
             // esconder a tela atual
             setVisible(false);
