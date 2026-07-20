@@ -189,7 +189,7 @@ public class SignUpOne extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
-        String formo = String.valueOf(randomNumber);
+        String formno = String.valueOf(randomNumber);
         String name = nameTextField.getText(); //função que extrai o texto do campo preenchido
         String fname = fnameTextField.getText();
         String email = emailTextField.getText();
@@ -222,13 +222,13 @@ public class SignUpOne extends JFrame implements ActionListener {
                 //valindado campos vazios
                 JOptionPane.showMessageDialog(null, "Name is Required");
             } else{
-                //fazendo a conexão com banco de dados e realizando um QUERY(DML)
+                //fazendo a conexão com banco de dados e realizando uma QUERY(DML)
                 Conn c = new Conn();
-                String query = "insert into signup values ('" + formo + "', '" + name + "', '" + fname + "', '" + dob + "', '" + gender + "', '" + email + "', '" + marital + "', '" + address + "', '" + city + "', '" + state + "', '" + pin + "');";
+                String query = "insert into signup values ('" + formno + "', '" + name + "', '" + fname + "', '" + dob + "', '" + gender + "', '" + email + "', '" + marital + "', '" + address + "', '" + city + "', '" + pin + "', '" + state + "')";
                 c.s.executeUpdate(query);
 
                 setVisible(false);
-                new SignUpTwo(formo).setVisible(true);
+                new SignUpTwo(formno).setVisible(true);
             }
         }catch(Exception ae){
             System.out.println(ae);

@@ -99,7 +99,7 @@ public class Login extends JFrame implements ActionListener {
             Conn conn = new Conn();
             String cardNumber = cardTextField.getText();
             String pinNumber = pinTextField.getText();
-            String query = "select * from login where cardnumber = '"+cardNumber+"' and pinnumber = '"+pinNumber+"';";
+            String query = "select * from login where cardnumber = '"+cardNumber+"' and pinnumber = '"+pinNumber+"'";
 
             try{
                 ResultSet rs = conn.s.executeQuery(query);
@@ -107,7 +107,7 @@ public class Login extends JFrame implements ActionListener {
                     setVisible(false);
                     new Transactions(pinNumber).setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null,"Incorret Card Number or Pin");
+                    JOptionPane.showMessageDialog(null,"Incorrect Card Number or Pin");
                 }
             } catch (Exception e){
                 System.out.println(e);
