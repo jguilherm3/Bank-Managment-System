@@ -8,7 +8,7 @@ public class Conn {
     public Statement s;
 
     public Conn(){
-
+    //Conexão com Banco de Dados Mysql
         try {
             //1. Register the Driver (Carregando o driver do banco de dados)
             //Class.forName("com.mysql.cj.jdbc.Driver");

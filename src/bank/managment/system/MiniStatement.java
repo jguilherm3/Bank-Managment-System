@@ -12,6 +12,7 @@ public class MiniStatement extends JFrame implements ActionListener {
     JButton back;
 
     public MiniStatement(String pinNumber){
+        /*Classe que mostrará todas as movimentações/transações do usuário*/
         this.pinNumber = pinNumber;
 
         setLayout(null);
@@ -35,8 +36,10 @@ public class MiniStatement extends JFrame implements ActionListener {
 
         try {
             Conn conn = new Conn();
-            ResultSet rs = conn.s.executeQuery("select * from login where pin = '1234'");
+            ResultSet rs = conn.s.executeQuery("select * from login where pin = '"+pinNumber+"'");
+            // O Código abaixo percorre toda as colunas da query rs
             while(rs.next()){
+                //a intenção é pegar os 4 primeiros e últimos números do cardID.
                 card.setText("Card Number: "+rs.getString("card").substring(0,4) + "XXXXXXXX" + rs.getString("card").substring(12));
             }
         } catch (Exception e){
@@ -46,8 +49,9 @@ public class MiniStatement extends JFrame implements ActionListener {
         try{
             int balance = 0;
             Conn conn = new Conn();
-            ResultSet rs = conn.s.executeQuery("select * from bank where pin = '1234'");//"+pinNumber+"
+            ResultSet rs = conn.s.executeQuery("select * from bank where pin = '"+pinNumber+"'");
             while(rs.next()){
+                //a intenção é mostrar os valores de cada coluna da query, em especial a data da transação.
                 mini.setText(mini.getText() +"<html>" + rs.getString("date")
                         + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+rs.getString("type")+
                         "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +

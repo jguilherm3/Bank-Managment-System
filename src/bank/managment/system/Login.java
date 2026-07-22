@@ -14,9 +14,7 @@ public class Login extends JFrame implements ActionListener {
         setTitle("AUTOMATED TELLER MACHINE");
         setLayout(null);
 
-        //java.net.URL imageWay = getClass().getResource("/icons/img.png");
-
-        //Buscando a logo, carregando e mostrando.
+        //Buscando, carregando e exibindo a logo.
         ImageIcon firstLoad = new ImageIcon(ClassLoader.getSystemResource("icons/img.png"));
         Image secondLoad = firstLoad.getImage().getScaledInstance(100,100, Image.SCALE_DEFAULT);
         ImageIcon thirdLoad = new ImageIcon(secondLoad);
@@ -72,6 +70,7 @@ public class Login extends JFrame implements ActionListener {
         singUp.setBounds(300,350,230,30);
         singUp.setBackground(Color.BLACK);
         singUp.setForeground(Color.WHITE);
+        //ação de clicar no botão
         singUp.addActionListener(this);
         add(singUp);
 
@@ -83,7 +82,7 @@ public class Login extends JFrame implements ActionListener {
         setVisible(true);
         setLocation(350,200);
 
-        //Fechar a aba no X
+        //Fechar a aba apenas no X
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -94,6 +93,7 @@ public class Login extends JFrame implements ActionListener {
             cardTextField.setText("");
             pinTextField.setText("");
 
+        //ae.getSource() refere-se a ação de clicar no botão
         } else if (ae.getSource() == singIn){
 
             Conn conn = new Conn();

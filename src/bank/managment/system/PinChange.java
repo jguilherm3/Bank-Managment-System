@@ -61,7 +61,7 @@ public class PinChange extends JFrame implements ActionListener {
 
         back = new JButton("BACK");
         back.setBounds(355,520,150,30);
-        change.addActionListener(this);
+        back.addActionListener(this);
         image.add(back);
 
 
@@ -114,7 +114,7 @@ public class PinChange extends JFrame implements ActionListener {
             } catch (Exception e){
                 System.out.println(e);
             }
-        } else {
+        } else if (ae.getSource() == back) {
             setVisible(false);
             new Transactions(pinNumber).setVisible(true);
         }
